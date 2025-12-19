@@ -1,0 +1,175 @@
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UI;
+
+/// <summary>
+/// 버튼들을 눌렀을 때, PLC로 신호가 전달된다.
+/// 속성: 버튼들
+/// </summary>
+public class PLCManager : MonoBehaviour
+{
+    [Header("PLC 신호")]
+    public bool startSignal;
+    public bool stopSignal;
+
+    [Header("장비 세팅")]
+    [SerializeField] Cylinder cylinder1;    // 양솔
+    [SerializeField] Cylinder cylinder2;    // 단솔
+    [SerializeField] Cylinder cylinder3;    // 단솔
+    [SerializeField] Cylinder cylinder4;    // 단솔
+    [SerializeField] TowerLamp towerLamp;
+    [SerializeField] Conveyor conveyor;
+    [SerializeField] Loader loader;
+
+    [Header("UI 버튼 세팅")]
+    [SerializeField] Button 시작버튼;
+    [SerializeField] Button 스탑버튼;
+    [SerializeField] Button redLamp버튼;
+    [SerializeField] Button yellowLamp버튼;
+    [SerializeField] Button greenLamp버튼;
+    [SerializeField] Button convCW버튼;
+    [SerializeField] Button convCCW버튼;
+    [SerializeField] Button loader버튼;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        시작버튼.onClick.AddListener(OnStartBtnClkEvent);
+        스탑버튼.onClick.AddListener(OnStopBtnClkEvent);
+        redLamp버튼.onClick.AddListener(OnRedLampBtnClkEvent);
+        yellowLamp버튼.onClick.AddListener(OnYellowLampBtnClkEvent);
+        greenLamp버튼.onClick.AddListener(OnGreenLampBtnClkEvent);
+        convCW버튼.onClick.AddListener(OnConvCWBtnClkEvent);
+        convCCW버튼.onClick.AddListener(OnConvCCWBtnClkEvent);
+        loader버튼.onClick.AddListener(OnLoaderBtnClkEvent);
+    }
+
+    void OnStartBtnClkEvent()
+    {
+        startSignal = !startSignal;
+        Debug.LogWarning("시작버튼이 눌렸습니다.");
+    }
+
+    void OnStopBtnClkEvent()
+    {
+        stopSignal = !stopSignal;
+        Debug.LogWarning("스탑버튼이 눌렸습니다.");
+    }
+
+    void OnRedLampBtnClkEvent()
+    {
+        towerLamp.redLamSignal = !towerLamp.redLamSignal;
+        Debug.LogWarning("Red Lamp 버튼이 눌렸습니다.");
+    }
+
+    void OnYellowLampBtnClkEvent()
+    {
+        towerLamp.yellowLamSignal = !towerLamp.yellowLamSignal;
+        Debug.LogWarning("Yellow Lamp 버튼이 눌렸습니다.");
+    }
+
+    void OnGreenLampBtnClkEvent()
+    {
+        towerLamp.greenLamSignal = !towerLamp.greenLamSignal;
+        Debug.LogWarning("Green Lamp 버튼이 눌렸습니다.");
+    }
+
+    void OnConvCWBtnClkEvent()
+    {
+        conveyor.cwSignal = !conveyor.cwSignal;
+        Debug.LogWarning("Conv CW 버튼이 눌렸습니다.");
+    }
+
+    void OnConvCCWBtnClkEvent()
+    {
+        conveyor.ccwSignal = !conveyor.ccwSignal;
+        Debug.LogWarning("Conv CCW 버튼이 눌렸습니다.");
+    }
+
+    public void OnSOL1BtnDownEvent()
+    {
+        cylinder1.forwardSignal = true;
+
+        Debug.LogWarning("SOL1 ON -> CYL1 Forward...");
+    }
+
+    public void OnSOL1BtnUpEvent()
+    {
+        cylinder1.forwardSignal = false;
+
+        Debug.LogWarning("SOL1 OFF");
+    }
+
+    public void OnSOL2BtnDownEvent()
+    {
+        cylinder1.backwardSignal = true;
+
+        Debug.LogWarning("SOL2 ON -> CYL1 Backward...");
+    }
+
+    public void OnSOL2BtnUpEvent()
+    {
+        cylinder1.backwardSignal = false;
+
+        Debug.LogWarning("SOL2 OFF");
+    }
+
+    public void OnSOL3BtnDownEvent()
+    {
+        cylinder2.forwardSignal = true;
+
+        Debug.LogWarning("SOL3 ON -> CYL2 Forward...");
+    }
+
+    public void OnSOL3BtnUpEvent()
+    {
+        cylinder2.forwardSignal = false;
+
+        Debug.LogWarning("SOL3 OFF -> CYL2 Backward...");
+    }
+
+    public void OnSOL4BtnDownEvent()
+    {
+        cylinder3.forwardSignal = true;
+
+        Debug.LogWarning("SOL4 ON -> CYL3 Forward...");
+    }
+
+    public void OnSOL4BtnUpEvent()
+    {
+        cylinder3.forwardSignal = false;
+
+        Debug.LogWarning("SOL4 OFF -> CYL3 Backward...");
+    }
+
+    public void OnSOL5BtnDownEvent()
+    {
+        cylinder4.forwardSignal = true;
+
+        Debug.LogWarning("SOL5 ON -> CYL4 Forward...");
+    }
+
+    public void OnSOL5BtnUpEvent()
+    {
+        cylinder4.forwardSignal = false;
+
+        Debug.LogWarning("SOL5 OFF -> CYL4 Backward...");
+    }
+
+    public void OnLoaderBtnClkEvent()
+    {
+        StartCoroutine(CoLoadObj());
+
+        Debug.LogWarning("물체가 로드되었습니다.");
+    }
+
+    IEnumerator CoLoadObj()
+    {
+        loader.loadSignal = true;
+
+        yield return new WaitForEndOfFrame(); // 1프레임 대기
+
+        loader.loadSignal = false;
+    }
+}

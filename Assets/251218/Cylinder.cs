@@ -101,9 +101,7 @@ public class Cylinder : MonoBehaviour
 
                 Vector3 back = new Vector3(0, minPos, 0);
 
-                print("후진중...");
                 yield return CoMoveCylinder(back);
-                print("후진완료.");
             }
 
             yield return null;  // *주의: 한프레임 대기 없다면 프로그램 정지
