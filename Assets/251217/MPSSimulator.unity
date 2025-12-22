@@ -2380,6 +2380,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   forwardSignal: 0
   backwardSignal: 0
+  lsForwardSignal: 0
+  lsBackwardSignal: 0
   type: 1
   rod: {fileID: 379490356}
   minPos: 0.3
@@ -2388,6 +2390,8 @@ MonoBehaviour:
   returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
+  lsForwardMR: {fileID: 1266757751}
+  lsBackwardMR: {fileID: 1495814619}
 --- !u!1 &385109274
 GameObject:
   m_ObjectHideFlags: 0
@@ -5856,6 +5860,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cylinder
   forwardSignal: 0
   backwardSignal: 0
+  lsForwardSignal: 0
+  lsBackwardSignal: 0
   type: 0
   rod: {fileID: 978697957}
   minPos: 0.4
@@ -5864,6 +5870,8 @@ MonoBehaviour:
   returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
+  lsForwardMR: {fileID: 665410579}
+  lsBackwardMR: {fileID: 356908133}
 --- !u!1 &907054880
 GameObject:
   m_ObjectHideFlags: 0
@@ -8802,6 +8810,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cylinder
   forwardSignal: 0
   backwardSignal: 0
+  lsForwardSignal: 0
+  lsBackwardSignal: 0
   type: 0
   rod: {fileID: 1874946734}
   minPos: 0.3
@@ -8810,6 +8820,8 @@ MonoBehaviour:
   returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
+  lsForwardMR: {fileID: 2040084194}
+  lsBackwardMR: {fileID: 1741742687}
 --- !u!1 &1251484065
 GameObject:
   m_ObjectHideFlags: 0
@@ -9884,6 +9896,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cylinder
   forwardSignal: 0
   backwardSignal: 0
+  lsForwardSignal: 0
+  lsBackwardSignal: 0
   type: 0
   rod: {fileID: 1694404544}
   minPos: 0.3
@@ -9892,6 +9906,8 @@ MonoBehaviour:
   returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
+  lsForwardMR: {fileID: 655849698}
+  lsBackwardMR: {fileID: 882831577}
 --- !u!1 &1392923949
 GameObject:
   m_ObjectHideFlags: 0
@@ -16243,7 +16259,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3236411406786547546, guid: fedd2fbb80e9ac94bae3ffcd7be41683, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7868149
+      value: -1.921
       objectReference: {fileID: 0}
     - target: {fileID: 3236411406786547546, guid: fedd2fbb80e9ac94bae3ffcd7be41683, type: 3}
       propertyPath: m_LocalPosition.y

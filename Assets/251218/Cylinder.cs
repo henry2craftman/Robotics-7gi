@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using ActUtlType64Lib;
 
 /// <summary>
 /// PLC로 부터 신호를 받으면 솔레노이드(단방향 or 양방향)가 작동하고,
