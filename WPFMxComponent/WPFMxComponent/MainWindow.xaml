@@ -1,0 +1,49 @@
+﻿<Window x:Class="WPFMxComponent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFMxComponent"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="360" Width="422"
+        >
+    <Grid Margin="2,0,0,2" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.206"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Open" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="34" Width="69" FontWeight="Bold" FontSize="15" Click="OnOpenClkEvent" Grid.Column="2"/>
+        <Button Content="Close" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Height="34" Width="69" FontWeight="Bold" FontSize="15" Click="OnCloseClkEvent" Grid.Column="2"/>
+        <Button Grid.Column="4" Content="GetDevice" HorizontalAlignment="Center" Margin="0,49,0,0" VerticalAlignment="Top" Height="34" Width="70" FontWeight="Bold" Click="OnGetDeviceClkEvent" RenderTransformOrigin="1.357,0.589"/>
+        <TextBox x:Name="deviceInput" HorizontalAlignment="Left" Margin="0,49,0,0" TextWrapping="Wrap" Text="Enter Device" VerticalAlignment="Top" Width="69" Height="34" TextAlignment="Center" RenderTransformOrigin="0.535,0.913" FontWeight="Bold" Grid.Column="2"/>
+        <Label x:Name="outputLabel" Content="Output" HorizontalAlignment="Left" Margin="0,307,0,0" VerticalAlignment="Top" Width="357" Height="26" Grid.Column="2" Grid.ColumnSpan="5"/>
+        <Button Grid.Column="5" Content="SetDevice" HorizontalAlignment="Center" Margin="0,49,0,0" VerticalAlignment="Top" Height="34" Width="70" FontWeight="Bold" Click="OnSetDeviceClkEvent"/>
+        <TextBox x:Name="valueInput" HorizontalAlignment="Left" Margin="75,49,0,0" TextWrapping="Wrap" Text="Enter Value" VerticalAlignment="Top" Width="69" Height="34" TextAlignment="Center" RenderTransformOrigin="0.535,0.913" FontWeight="Bold" Grid.Column="2"/>
+        <TextBox x:Name="StartDevice" HorizontalAlignment="Left" Margin="0,114,0,0" TextWrapping="Wrap" Text="Start Device" VerticalAlignment="Top" Width="69" Height="38" TextAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+        <TextBox x:Name="blockNumber" HorizontalAlignment="Left" Margin="75,114,0,0" TextWrapping="Wrap" Text="block&#xD;&#xA;Number" VerticalAlignment="Top" Width="69" Height="38" TextAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+        <Button Grid.Column="3" Content="ReadDeviceBlock" HorizontalAlignment="Left" Margin="0,116,0,0" VerticalAlignment="Top" Height="34" Width="123" FontWeight="Bold" Click="OnReadDeviceBlockClkEvent" RenderTransformOrigin="1.357,0.589" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="blockValue" HorizontalAlignment="Left" Margin="75,157,0,0" TextWrapping="Wrap" Text="Enter&#xD;&#xA;Value" VerticalAlignment="Top" Width="69" Height="38" TextAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+        <Button Grid.Column="3" Content="WriteDeviceBlock" HorizontalAlignment="Left" Margin="1,159,0,0" VerticalAlignment="Top" Height="34" Width="123" FontWeight="Bold" Click="OnWriteDeviceBlockClkEvent" RenderTransformOrigin="1.357,0.589" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Devices" HorizontalAlignment="Left" Margin="0,218,0,0" TextWrapping="Wrap" Text="Devices" VerticalAlignment="Top" Width="69" Height="38" TextAlignment="Center" FontWeight="Bold" Grid.Column="2" />
+        <Button Grid.Column="3" Content="ReadDeviceRandom" HorizontalAlignment="Left" Margin="0,221,0,0" VerticalAlignment="Top" Height="34" Width="123" FontWeight="Bold" Click="OnReadDeviceRandomClkEvent" RenderTransformOrigin="1.357,0.589" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="valueRandom" HorizontalAlignment="Left" Margin="75,262,0,0" TextWrapping="Wrap" Text="Values" VerticalAlignment="Top" Width="69" Height="38" TextAlignment="Center" FontWeight="Bold" Grid.Column="2" />
+        <Button Grid.Column="3" Content="WriteDeviceRandom" HorizontalAlignment="Left" Margin="0,264,0,0" VerticalAlignment="Top" Height="34" Width="123" FontWeight="Bold" Click="OnWriteDeviceRandomClkEvent" RenderTransformOrigin="1.357,0.589" Grid.ColumnSpan="3"/>
+
+    </Grid>
+</Window>
