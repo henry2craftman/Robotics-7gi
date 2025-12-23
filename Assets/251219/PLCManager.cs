@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
@@ -31,6 +32,8 @@ public class PLCManager : MonoBehaviour
     [SerializeField] Button convCW버튼;
     [SerializeField] Button convCCW버튼;
     [SerializeField] Button loader버튼;
+    [SerializeField] Button connect버튼;
+    [SerializeField] Button disConnect버튼;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +46,56 @@ public class PLCManager : MonoBehaviour
         convCW버튼.onClick.AddListener(OnConvCWBtnClkEvent);
         convCCW버튼.onClick.AddListener(OnConvCCWBtnClkEvent);
         loader버튼.onClick.AddListener(OnLoaderBtnClkEvent);
+        connect버튼.onClick.AddListener(OnConnectBtnClkEvent);
+        disConnect버튼.onClick.AddListener(OnDisconnectBtnClkEvent);
+    }
+
+    private void Update()
+    {
+        // cylinder1은 양솔
+        cylinder1.forwardSignal  = MxComponent.instance.plcData[0][0];
+        cylinder1.backwardSignal = MxComponent.instance.plcData[0][1];
+
+        // 나머지는 단동형
+        cylinder2.forwardSignal = MxComponent.instance.plcData[0][2];
+        cylinder3.forwardSignal = MxComponent.instance.plcData[0][3];
+        cylinder4.forwardSignal = MxComponent.instance.plcData[0][4];
+    }
+
+    private void OnDisconnectBtnClkEvent()
+    {
+        int iRet = MxComponent.instance.Close();
+
+        if (iRet == -1)
+        {
+            Debug.LogWarning("이미 PLC와 연결 해지된 상태입니다.");
+        }
+        else if (iRet == 0)
+        {
+            Debug.Log("PLC 연결해지가 완료되었습니다.");
+        }
+        else
+        {
+            Debug.LogWarning(iRet.ToString("X"));
+        }
+    }
+
+    private void OnConnectBtnClkEvent()
+    {
+        int iRet = MxComponent.instance.Open();
+
+        if (iRet == -1)
+        {
+            Debug.LogWarning("이미 PLC에 연결된 상태입니다.");
+        }
+        else if (iRet == 0)
+        {
+            Debug.Log("PLC 연결이 완료되었습니다.");
+        }
+        else
+        {
+            Debug.LogWarning(iRet.ToString("X"));
+        }
     }
 
     void OnStartBtnClkEvent()
