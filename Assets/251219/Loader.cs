@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// LOADER 버튼을 누를 때 마다 금속, 플라스틱 순서로 프리팹을 인스턴싱한다.
@@ -13,12 +14,15 @@ public class Loader : MonoBehaviour
     [Header("장비 설정")]
     [SerializeField] GameObject 금속Prefab;
     [SerializeField] GameObject 플라스틱Prefab;
+    bool isLoaded = false;
 
     // Update is called once per frame
     void Update()
     {
-        if(loadSignal)
+        if(loadSignal && !isLoaded)
         {
+            isLoaded = true;
+
             if(count % 2 == 0)
             {
                 GameObject obj = Instantiate(플라스틱Prefab, this.transform);
@@ -31,6 +35,11 @@ public class Loader : MonoBehaviour
             }
 
             count++;
+        }
+
+        if(!loadSignal)
+        {
+            isLoaded = false;
         }
     }
 }
