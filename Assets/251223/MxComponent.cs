@@ -3,6 +3,9 @@ using ActUtlType64Lib;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Threading.Tasks;
+using System.Threading;
+using Unity.VisualScripting;
 
 /// <summary>
 /// MxComponent 객체를 사용하여 PLC와 통신한다
@@ -20,6 +23,7 @@ public class MxComponent : MonoBehaviour
     //bool[,] data = new bool[3,16];
     public List<bool[]> plcData = new List<bool[]>(); // 공용 데이터 컨테이너
     public int[] plcXData = new int[1];               // PLCManager에서 전달받은 정보
+    CancellationTokenSource cts = new CancellationTokenSource();    // 스레드 관리자!
 
     private void Awake()
     {
@@ -28,12 +32,16 @@ public class MxComponent : MonoBehaviour
             instance = this;
     }
 
+    /// <summary>
+    /// 메인스레드만 사용시 PLCManager.cs의 Connect버튼과 연결
+    /// </summary>
+    /// <returns></returns>
     public int Open()
     {
         if (isConnected) return -1;
 
         if(mxComponent == null)
-            mxComponent = new ActUtlType64();
+            mxComponent = new ActUtlType64(); // 메인스레드에서 mxComponent 사용시
 
         int iRet = mxComponent.Open();
 
@@ -47,6 +55,19 @@ public class MxComponent : MonoBehaviour
         return iRet;
     }
 
+    /// <summary>
+    /// PLC와 통신시 발생하는 블로킹 현상을 방지하기 위해 새로운 워커스레드 사용
+    /// PLCManager.cs의 버튼 UI 메소드와 연결
+    /// </summary>
+    public void OpenAsync()
+    {
+        Task.Run(UpdatePLCDataAsync, cts.Token);
+    }
+
+    /// <summary>
+    /// 메인스레드만 사용시 PLCManager.cs의 Disconnect버튼과 연결
+    /// </summary>
+    /// <returns></returns>
     public int Close()
     {
         if (!isConnected) return -1;
@@ -59,6 +80,18 @@ public class MxComponent : MonoBehaviour
         return iRet;
     }
 
+    /// <summary>
+    /// 다중 스레드 사용시 PLCManager.cs의 Disconnect버튼과 연결
+    /// </summary>
+    public void CloseAsync()
+    {
+        isConnected = false;
+    }
+
+    /// <summary>
+    /// 유니티 Main 스레드에서 작동시키는 방법 -> Blocking 문제 발생 -> 40~80 FPS 
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator UpdatePLCData()
     {
         while(isConnected)
@@ -72,6 +105,55 @@ public class MxComponent : MonoBehaviour
         }
     }
 
+    async void UpdatePLCDataAsync()
+    {
+        mxComponent = new ActUtlType64();
+
+        int iRet = mxComponent.Open();
+
+        if(iRet == 0)
+        {
+            isConnected = true;
+            Debug.Log("PLC와 연결이 성공적으로 완료되었습니다!");
+        }
+        else
+        {
+            Debug.LogWarning(iRet.ToString("X"));
+        }
+
+        while (isConnected)
+        {
+            ReadDeviceBlock(mxComponent, "Y0", 1);
+
+            WriteDeviceBlock(mxComponent, "X0", 1, ref plcXData);
+
+            // 1f, 0.3f -> 1000ms, 300ms
+            int newInterval = Convert.ToInt32(interval * 1000);
+
+            await Task.Delay(newInterval, cts.Token);
+        }
+
+        iRet = mxComponent.Close();
+
+        if(iRet == 0)
+        {
+            Debug.Log("PLC와 연결이 해지되었습니다!");
+        }
+        else
+        {
+            Debug.Log(iRet.ToString("X"));
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(cts != null)
+        {
+            cts.Cancel();
+            cts.Dispose();
+        }
+    }
+
     public void ReadDeviceBlock(string startDevice, int blockNum)
     {
         if(isConnected)
@@ -80,6 +162,31 @@ public class MxComponent : MonoBehaviour
             int iRet = mxComponent.ReadDeviceBlock(startDevice, blockNum, out data[0]);
 
             if(iRet == 0)
+            {
+                // 데이터 변환(가상의 설비들이 잘 사용할 수 있도록 하기 위해)
+                print(data[0]);
+                // 1023 -> { true, false, true, false,  true, false, true, false, true, false, true, false,  true, false, true, false }
+                plcData = ConvertDecimalToBinary(data);
+            }
+            else
+            {
+                Debug.LogWarning(iRet.ToString("X"));
+            }
+        }
+        else
+        {
+            Debug.LogWarning("PLC와 연결이 되어있지 않습니다.");
+        }
+    }
+
+    public void ReadDeviceBlock(ActUtlType64 _mxComp, string startDevice, int blockNum)
+    {
+        if (isConnected)
+        {
+            int[] data = new int[blockNum];
+            int iRet = _mxComp.ReadDeviceBlock(startDevice, blockNum, out data[0]);
+
+            if (iRet == 0)
             {
                 // 데이터 변환(가상의 설비들이 잘 사용할 수 있도록 하기 위해)
                 print(data[0]);
@@ -148,6 +255,27 @@ public class MxComponent : MonoBehaviour
             int iRet = mxComponent.WriteDeviceBlock(startDevice, blockNum, ref data[0]);
 
             if(iRet == 0)
+            {
+                Debug.Log("쓰기가 완료되었습니다.");
+            }
+            else
+            {
+                Debug.LogWarning(iRet.ToString("X"));
+            }
+        }
+        else
+        {
+            Debug.LogWarning("PLC와 연결이 되어있지 않습니다.");
+        }
+    }
+
+    public void WriteDeviceBlock(ActUtlType64 _mxComp, string startDevice, int blockNum, ref int[] data)
+    {
+        if (isConnected)
+        {
+            int iRet = _mxComp.WriteDeviceBlock(startDevice, blockNum, ref data[0]);
+
+            if (iRet == 0)
             {
                 Debug.Log("쓰기가 완료되었습니다.");
             }

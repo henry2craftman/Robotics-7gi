@@ -112,38 +112,40 @@ public class PLCManager : MonoBehaviour
 
     private void OnDisconnectBtnClkEvent()
     {
-        int iRet = MxComponent.instance.Close();
+        MxComponent.instance.CloseAsync();
+        //int iRet = MxComponent.instance.Close();
 
-        if (iRet == -1)
-        {
-            Debug.LogWarning("이미 PLC와 연결 해지된 상태입니다.");
-        }
-        else if (iRet == 0)
-        {
-            Debug.Log("PLC 연결해지가 완료되었습니다.");
-        }
-        else
-        {
-            Debug.LogWarning(iRet.ToString("X"));
-        }
+        //if (iRet == -1)
+        //{
+        //    Debug.LogWarning("이미 PLC와 연결 해지된 상태입니다.");
+        //}
+        //else if (iRet == 0)
+        //{
+        //    Debug.Log("PLC 연결해지가 완료되었습니다.");
+        //}
+        //else
+        //{
+        //    Debug.LogWarning(iRet.ToString("X"));
+        //}
     }
 
     private void OnConnectBtnClkEvent()
     {
-        int iRet = MxComponent.instance.Open();
+        MxComponent.instance.OpenAsync();
+        //int iRet = MxComponent.instance.Open();
 
-        if (iRet == -1)
-        {
-            Debug.LogWarning("이미 PLC에 연결된 상태입니다.");
-        }
-        else if (iRet == 0)
-        {
-            Debug.Log("PLC 연결이 완료되었습니다.");
-        }
-        else
-        {
-            Debug.LogWarning(iRet.ToString("X"));
-        }
+        //if (iRet == -1)
+        //{
+        //    Debug.LogWarning("이미 PLC에 연결된 상태입니다.");
+        //}
+        //else if (iRet == 0)
+        //{
+        //    Debug.Log("PLC 연결이 완료되었습니다.");
+        //}
+        //else
+        //{
+        //    Debug.LogWarning(iRet.ToString("X"));
+        //}
     }
 
     void OnStartBtnClkEvent()
