@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 /// <summary>
@@ -20,7 +21,7 @@ public class TaskManager : MonoBehaviour
     {
         tokenSource = new CancellationTokenSource(); // Task를 관리하는 관리자 역할
         var token = tokenSource.Token;               // Task에 정보를 저장하는 역할
-        Task.Run(Minus, token);                     // 스레드 생성 = 일 할당 + token등록
+        Task thread1 = Task.Run(Minus, tokenSource.Token);  // 스레드 생성 = 일 할당 + token등록
     }
 
     /// <summary>
@@ -62,7 +63,7 @@ public class TaskManager : MonoBehaviour
 
             Debug.Log("Worker Thread: " + data);
 
-            await Task.Delay(interval, tokenSource.Token);
+            await Task.Delay(interval, tokenSource.Token); // 스레드 반복의 지연
         }
     }
 }

@@ -15,6 +15,7 @@ public class PLCManager : MonoBehaviour
     [Header("PLC 신호")]
     public bool startSignal;
     public bool stopSignal;
+    public bool eStopSignal;
 
     [Header("장비 세팅")]
     [SerializeField] Cylinder cylinder1;    // 양솔
@@ -31,6 +32,7 @@ public class PLCManager : MonoBehaviour
     [Header("UI 버튼 세팅")]
     [SerializeField] Button 시작버튼;
     [SerializeField] Button 스탑버튼;
+    [SerializeField] Button 긴급정지버튼;
     [SerializeField] Button redLamp버튼;
     [SerializeField] Button yellowLamp버튼;
     [SerializeField] Button greenLamp버튼;
@@ -45,6 +47,7 @@ public class PLCManager : MonoBehaviour
     {
         시작버튼.onClick.AddListener(OnStartBtnClkEvent);
         스탑버튼.onClick.AddListener(OnStopBtnClkEvent);
+        긴급정지버튼.onClick.AddListener(OnEStopBtnClkEvent);
         redLamp버튼.onClick.AddListener(OnRedLampBtnClkEvent);
         yellowLamp버튼.onClick.AddListener(OnYellowLampBtnClkEvent);
         greenLamp버튼.onClick.AddListener(OnGreenLampBtnClkEvent);
@@ -53,6 +56,12 @@ public class PLCManager : MonoBehaviour
         loader버튼.onClick.AddListener(OnLoaderBtnClkEvent);
         connect버튼.onClick.AddListener(OnConnectBtnClkEvent);
         disConnect버튼.onClick.AddListener(OnDisconnectBtnClkEvent);
+    }
+
+    private void OnEStopBtnClkEvent()
+    {
+        eStopSignal = !eStopSignal;
+        Debug.LogWarning("긴급정지 버튼이 눌렸습니다!");
     }
 
     private void Update()
@@ -95,8 +104,13 @@ public class PLCManager : MonoBehaviour
         int s1  = loaderSensor.sensorSignal    ? 1 : 0;
         int s2  = metalSensor.sensorSignal     ? 1 : 0;
         int s3  = proximitySensor.sensorSignal ? 1 : 0;
+        int start = startSignal ? 1 : 0;
+        int stop  = stopSignal  ? 1 : 0;
+        int eStop = eStopSignal ? 1 : 0;
 
-        string xDataStr = $"{ls1}{ls2}" +
+        // X00부터 시작하는 데이터 쓰기!
+        string xDataStr = $"{start}{stop}{eStop}" +
+                          $"{ls1}{ls2}" +
                           $"{ls3}{ls4}" +
                           $"{ls5}{ls6}" +
                           $"{ls7}{ls8}" +
