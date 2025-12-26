@@ -49,6 +49,11 @@ public class TaskManager : MonoBehaviour
         Debug.Log("Update: " + data);
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
+
     /// <summary>
     /// 워커스레드가 실행할 반복 함수(메인스레드의 update와 동일한 용도)
     /// </summary>

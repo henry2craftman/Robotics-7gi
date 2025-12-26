@@ -107,6 +107,7 @@ public class MxComponent : MonoBehaviour
 
     async void UpdatePLCDataAsync()
     {
+        // 단일스레드원칙(STA): 각 스레드에서 객체를 따로 관리할 수 있도록
         mxComponent = new ActUtlType64();
 
         int iRet = mxComponent.Open();

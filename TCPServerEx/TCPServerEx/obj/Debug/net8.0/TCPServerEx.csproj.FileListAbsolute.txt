@@ -1,0 +1,14 @@
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\bin\Debug\net8.0\TCPServerEx.exe
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\bin\Debug\net8.0\TCPServerEx.deps.json
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\bin\Debug\net8.0\TCPServerEx.runtimeconfig.json
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\bin\Debug\net8.0\TCPServerEx.dll
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\bin\Debug\net8.0\TCPServerEx.pdb
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\TCPServerEx.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\TCPServerEx.AssemblyInfoInputs.cache
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\TCPServerEx.AssemblyInfo.cs
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\TCPServerEx.csproj.CoreCompileInputs.cache
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\TCPServerEx.dll
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\refint\TCPServerEx.dll
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\TCPServerEx.pdb
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\TCPServerEx.genruntimeconfig.cache
+C:\Users\교수\Documents\7기\TCPServerEx\TCPServerEx\obj\Debug\net8.0\ref\TCPServerEx.dll

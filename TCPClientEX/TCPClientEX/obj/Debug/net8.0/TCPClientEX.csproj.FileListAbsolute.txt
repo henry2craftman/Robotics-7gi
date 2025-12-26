@@ -1,0 +1,14 @@
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\bin\Debug\net8.0\TCPClientEX.exe
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\bin\Debug\net8.0\TCPClientEX.deps.json
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\bin\Debug\net8.0\TCPClientEX.runtimeconfig.json
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\bin\Debug\net8.0\TCPClientEX.dll
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\bin\Debug\net8.0\TCPClientEX.pdb
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\TCPClientEX.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\TCPClientEX.AssemblyInfoInputs.cache
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\TCPClientEX.AssemblyInfo.cs
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\TCPClientEX.csproj.CoreCompileInputs.cache
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\TCPClientEX.dll
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\refint\TCPClientEX.dll
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\TCPClientEX.pdb
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\TCPClientEX.genruntimeconfig.cache
+C:\Users\교수\Documents\7기\TCPClientEX\TCPClientEX\obj\Debug\net8.0\ref\TCPClientEX.dll
