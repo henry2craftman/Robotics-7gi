@@ -17,6 +17,8 @@ public class ProgressManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(CoStartProgressBar());
+
+        DontDestroyOnLoad(this.gameObject); // 다른씬 로드시 현재 씬 or 객체를 가지고 간다.
     }
 
     IEnumerator CoStartProgressBar()

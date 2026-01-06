@@ -1,4 +1,4 @@
-﻿#define SLAVE // MASTER / SLAVE
+﻿#define MASTER // MASTER / SLAVE
 // 전처리기: 프로그램이 컴파일 되기 전, 코드를 어떤
 // 코드로 실행할지 정의
 using MPSSimulator;

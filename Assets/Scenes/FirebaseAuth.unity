@@ -2396,16 +2396,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eaa10dbf29b0b94694bf7ea2bb37b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  signupPanel: {fileID: 0}
-  nameInput: {fileID: 0}
-  emailInput: {fileID: 0}
-  pWInput: {fileID: 0}
-  pWCheckInput: {fileID: 0}
-  loginPanel: {fileID: 0}
-  loginEmailInput: {fileID: 0}
-  loginPWInput: {fileID: 0}
-  popupPanel: {fileID: 0}
-  popupText: {fileID: 0}
+  signupPanel: {fileID: 1144002638}
+  nameInput: {fileID: 297260136}
+  emailInput: {fileID: 1886861518}
+  pWInput: {fileID: 267622778}
+  pWCheckInput: {fileID: 771392654}
+  loginPanel: {fileID: 1193139062}
+  loginEmailInput: {fileID: 1886999258}
+  loginPWInput: {fileID: 1042435840}
+  popupPanel: {fileID: 1334972314}
+  popupText: {fileID: 1254800659}
 --- !u!1 &883981429
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,7 +4404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1605346919}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825246470}
+        m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
+        m_MethodName: OnLoginBtnClkEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1605346919
 MonoBehaviour:
   m_ObjectHideFlags: 0

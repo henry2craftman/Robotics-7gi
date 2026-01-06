@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FirebaseAuth.unity
+    guid: d97a5c781ef7297469fc6f1c4f680f8c
+  - enabled: 1
+    path: Assets/Scenes/Progress.unity
+    guid: b03329cd655f73d429a58fab95621068
+  - enabled: 1
     path: Assets/Scenes/MPSSimulator.unity
     guid: 560f4a3a9634464418cd95146fe42422
   m_configObjects:
